@@ -1,0 +1,19 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+BLUE='\033[1;34m'
+NOCOLOR='\033[0;m'
+UPATH=$(/usr/lib/update-notifier/apt-check --human-readable | head -n1 | cut -d " " -f1)
+
+clear
+echo " "
+echo -n "     Available updates :"; echo -e $BLUE $UPATH $NOCOLOR
+
+if [ "$UPATH" == 0 ]
+	then echo " " 
+		 echo -e "=>$GREEN There are no updates available $NOCOLOR";
+	
+	else echo " "
+		 sudo /usr/lib/update-notifier/apt-check -p
+fi
+

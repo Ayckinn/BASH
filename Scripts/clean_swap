@@ -1,0 +1,11 @@
+#!/bin/bash
+
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+NOCOLOR='\033[1;m'
+
+clear
+echo -e "=>$RED SWAP OFF $NOCOLOR"
+sudo swapoff -a
+echo -e "=>$GREEN SWAP ON $NOCOLOR"
+sudo swapon -a

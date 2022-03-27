@@ -1,0 +1,25 @@
+#!/bin/bash
+
+MAGENTA='\033[1;35m'
+GREEN='\033[1;32m'
+NOCOLOR='\033[1;m'
+
+clear
+
+echo "====================="
+echo -e "=$MAGENTA  SYSTEM UPGRADE   $NOCOLOR="
+echo "====================="
+sudo apt dist-upgrade -y
+sudo apt full-upgrade -y
+echo " "
+echo "====================="
+echo -e "=$MAGENTA   CLEAN DATABASE  $NOCOLOR="
+echo "====================="
+sudo apt autoremove -y
+echo " "
+echo "====================="
+echo -e "=$MAGENTA  DATABASE UPDATE  $NOCOLOR="
+echo "====================="
+sudo apt update
+echo " "
+echo -e "===>$GREEN DONE !"
