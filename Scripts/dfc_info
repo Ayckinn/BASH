@@ -1,0 +1,12 @@
+#!/bin/bash
+
+MAGENTA='\033[1;35m'
+NOCOLOR='\033[1;m'
+
+clear
+echo " "
+echo "    ======================="
+echo -e "    =$MAGENTA  AVAILABLE STORAGE  $NOCOLOR="
+echo "    ======================="
+echo " "
+dfc -dp -/dev/loop,tmpfs
