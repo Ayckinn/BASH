@@ -1,0 +1,22 @@
+#!/bin/bash
+
+RED='\033[1;31m'
+NOCOLOR='\033[1;m'
+
+clear
+
+if [ -x /usr/bin/exa ]
+	then exa -ahli "$@";
+
+	else echo -n -e "\n$RED [EXA] is not installed on your system.
+   Do you want to install it (y/n) ? $NOCOLOR";
+		
+		read -r answer;
+		echo " "
+		if [ $answer == 'y' ]
+			then sudo apt install -y exa;
+			else exit 0;	
+		fi
+fi
+
+# "$@" Allows to type any argument behind the command

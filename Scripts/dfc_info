@@ -1,12 +1,26 @@
 #!/bin/bash
 
+RED='\033[1;31m'
 MAGENTA='\033[1;35m'
 NOCOLOR='\033[1;m'
 
 clear
 echo " "
-echo "    ======================="
-echo -e "    =$MAGENTA  AVAILABLE STORAGE  $NOCOLOR="
-echo "    ======================="
-echo " "
-dfc -dp -/dev/loop,tmpfs
+
+if [ -x /usr/bin/dfc ]
+	then echo "    =======================";
+		echo -e "    =$MAGENTA  AVAILABLE STORAGE  $NOCOLOR=";
+		echo "    =======================";
+		echo " ";
+		dfc -dp -/dev/loop,tmpfs;
+
+	else echo -n -e "$RED [DFC] is not installed on your system.
+   Do you want to install it (y/n) ? $NOCOLOR";
+		
+		read -r answer
+		echo " "
+		if [ $answer == 'y' ]
+			then sudo apt install -y dfc;
+			else exit 0;	
+		fi
+fi
