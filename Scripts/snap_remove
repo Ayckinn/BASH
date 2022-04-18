@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#-- FONT COLOR
+GREEN='\033[0;32m'
+MAGENTA='\033[1;35m'
+NOCOLOR='\033[1;m'
+
+clear
+echo " "
+echo -e "$> Remove $MAGENTA$@$NOCOLOR in progress..."
+echo " "
+sleep 0.5
+sudo snap remove "$@"
+sleep 0.5
+echo " "
+echo -e "$> $MAGENTA$@$NOCOLOR has been$GREEN successfully$NOCOLOR uninstalled."

@@ -1,6 +1,8 @@
 #!/bin/bash
 
+#-- FONT COLOR
 RED='\033[1;31m'
+GREEN='\033[1;32m'
 MAGENTA='\033[1;35m'
 NOCOLOR='\033[1;m'
 
@@ -8,19 +10,27 @@ clear
 echo " "
 
 if [ -x /usr/bin/dfc ]
-	then echo "    =======================";
-		echo -e "    =$MAGENTA  AVAILABLE STORAGE  $NOCOLOR=";
-		echo "    =======================";
+	then 
+		echo "                     =======================";
+		echo -e "                      $MAGENTA  FREE SYSTEM FILES  $NOCOLOR";
+		echo "                     =======================";
 		echo " ";
 		dfc -dp -/dev/loop,tmpfs;
 
-	else echo -n -e "$RED [DFC] is not installed on your system.
-   Do you want to install it (y/n) ? $NOCOLOR";
+else 
+	echo -n -e "$>$RED [DFC] is not installed on your system.
+    Do you want to install it (y/n) ? $NOCOLOR";
 		
-		read -r answer
-		echo " "
-		if [ $answer == 'y' ]
-			then sudo apt install -y dfc;
-			else exit 0;	
-		fi
+	read -r answer
+	echo " "
+	if [ $answer == 'y' ]
+		then 
+			echo -e "$>$MAGENTA DFC$NOCOLOR installation in progress..."
+			echo " "
+			sudo apt install -y dfc
+			echo " "
+			echo -e "$>$MAGENTA DFC$NOCOLOR installation =>$GREEN DONE !$NOCOLOR"
+	else 
+		exit 0	
+	fi
 fi

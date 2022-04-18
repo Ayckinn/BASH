@@ -1,0 +1,14 @@
+#!/bin/bash
+
+GREEN='\033[1;32m'
+NOCOLOR='\033[1;m'
+
+clear
+echo " "
+echo "$> Fix database in progress..."
+echo " "
+sleep 0.5
+sudo apt --fix-broken install -y
+sleep 0.5
+echo " "
+echo -e "$>$GREEN DONE$NOCOLOR"

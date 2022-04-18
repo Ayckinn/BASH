@@ -1,0 +1,56 @@
+#!/bin/bash
+
+#-- FONT COLOR
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+MAGENTA='\033[0;35m'
+NOCOLOR='\033[1;m'
+
+#----------------------------------------------------------
+menu()
+{
+	clear
+	echo " "
+	echo "$> Choose the ssh path to go : "
+	echo -e "    1.$GREEN Pandora  $NOCOLOR"
+	echo -e "    2.$GREEN Lisa     $NOCOLOR"
+	echo -e "    3.$GREEN Recalbox $NOCOLOR"
+	echo " "
+	echo -e "    x.$GREEN Exit     $NOCOLOR"
+	echo " "
+	echo -n "    >> "
+	read -r choice
+	echo " "
+}
+#==========================================================
+menu
+while true
+do
+	if [ $choice == '1' ]
+		then 
+			ssh ayckinn@192.168.1.23
+			break
+
+	elif [ $choice == '2' ]
+		then 
+			ssh pi@192.168.1.30
+			break
+
+	elif [ $choice == '3' ]
+		then 
+			ssh root@192.168.1.66
+			break
+
+	elif [ $choice == 'x' ]
+		then
+			echo -e "$MAGENTA    See you soon... $NOCOLOR" 
+			break
+
+	else
+		echo -e "$RED    Wrong choice ! $NOCOLOR"
+		sleep 2
+		menu
+	fi
+done
+
+# Replace [exec zsh] to [exec bash] if you use the bash

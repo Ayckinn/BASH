@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#-- FONT COLOR
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+MAGENTA='\033[1;35m'
+NOCOLOR='\033[1;m'
+
+if [ -x /usr/bin/figlet ]
+	then 
+		clear
+		figlet Ascii - table
+		./ascii
+
+else 
+	echo -ne "\n$>$RED [FIGLET] is not installed on your system.
+    Do you want to install it (y/n) ? $NOCOLOR"
+	
+		read -r answer;
+		echo " "
+		if [ $answer == 'y' ]
+			then 
+				echo -e "$>$MAGENTA Figlet$NOCOLOR installation in progress..."
+				echo " "
+				sudo apt install -y figlet
+				echo " "
+				echo -e "$> Inastallation =>$GREEN DONE $NOCOLOR"
+		else 
+			exit 0
+		fi
+fi

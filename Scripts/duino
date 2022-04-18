@@ -1,0 +1,54 @@
+#!/bin/bash
+
+#-- FONT COLOR
+RED='\033[1;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NOCOLOR='\033[1;m'
+
+#----------------------------------------------------------
+menu()
+{
+	clear
+	echo " "
+	echo "$> Choose an option for Arduino : "
+	echo -e "    1.$YELLOW Uno Connect       $NOCOLOR"
+	echo -e "    2.$YELLOW Nano Connect      $NOCOLOR"
+	echo -e "    3.$YELLOW PlatformIO update $NOCOLOR"
+	echo " "
+	echo -e "    x.$YELLOW Exit $NOCOLOR"
+	echo " "
+	echo -n "   >> "
+	read -r choice
+	echo " "
+}
+#==========================================================
+menu
+while true
+do
+	if [ $choice == '1' ]
+		then 
+			sudo usermod -a -G dialout ayckinn && sudo chmod a+rw /dev/ttyACM0
+			break
+
+	elif [ $choice == '2' ]
+		then 
+			sudo usermod -a -G dialout ayckinn && sudo chmod a+rw /dev/ttyUSB0
+			break
+
+	elif [ $choice == '3' ]
+		then 
+			curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules
+			break
+
+	elif [ $choice == 'x' ]
+		then
+			echo -e "$GREEN   See you soon... $NOCOLOR" 
+			break
+
+	else
+		echo -e "$RED   Wrong choice ! $NOCOLOR"
+		sleep 2
+		menu
+	fi
+done

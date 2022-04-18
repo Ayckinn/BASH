@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#-- FONT COLOR
+GREEN='\033[0;32m'
+MAGENTA='\033[1;35m'
+NOCOLOR='\033[1;m'
+
+clear
+echo " "
+echo -e "$> $MAGENTA$@$NOCOLOR install in progress..."
+echo " "
+sleep 0.5
+sudo snap install --classic "$@"
+sleep 0.5
+echo " "
+echo -e "$> $MAGENTA$@$NOCOLOR installed$GREEN sucessfully$NOCOLOR"

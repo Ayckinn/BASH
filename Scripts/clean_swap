@@ -1,11 +1,19 @@
 #!/bin/bash
 
+#-- FONT COLOR
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 NOCOLOR='\033[1;m'
 
 clear
-echo -e "=>$RED SWAP OFF $NOCOLOR"
+echo -e "$>$RED SWAP OFF $NOCOLOR"
+sleep 0.5
+echo "   Cleaning swap partition..."
+sleep 1
 sudo swapoff -a
-echo -e "=>$GREEN SWAP ON $NOCOLOR"
+echo -e "   Cleaning =>$GREEN DONE $NOCOLOR"
+sleep 1
+echo " "
+echo -e "$>$GREEN SWAP ON $NOCOLOR"
+sleep 0.5
 sudo swapon -a

@@ -7,13 +7,15 @@ UPATH=$(/usr/lib/update-notifier/apt-check --human-readable | head -n1 | cut -d 
 
 clear
 echo " "
-echo -n "     Available updates :"; echo -e $BLUE $UPATH $NOCOLOR
+echo -n "     Available updates :"
+echo -e $BLUE $UPATH $NOCOLOR
 
 if [ "$UPATH" == 0 ]
-	then echo " " 
-		 echo -e "=>$GREEN There are no updates available $NOCOLOR";
+	then 
+		echo " " 
+		echo -e "$>$GREEN There are no updates available $NOCOLOR";
 	
-	else echo " "
-		 sudo /usr/lib/update-notifier/apt-check -p
+	else 
+		echo " "
+		sudo /usr/lib/update-notifier/apt-check -p
 fi
-
